@@ -29,17 +29,6 @@ namespace GitCalc
         {
             LoadMatrix = true;
             this.Invalidate(true);
-            //Matrix l = Matrix.Instance;
-            //int[,] matrix = new int[l.Length, l.Width];
-
-
-            //for (int i = 0; i < l.Length; i++)
-            //{
-            //    for (int j = 0; j < l.Width; j++)
-            //    {
-            //        matrix[i, j] = 1;
-            //    }
-            //}
         }
 
         private void MainForm_Paint(object sender, PaintEventArgs e)

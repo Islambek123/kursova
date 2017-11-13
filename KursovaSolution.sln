@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Body", "GitCalc\Body.csproj", "{F49B6CF9-E24F-47A7-B364-596A0D58C939}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EditForm", "EditForm\EditForm.csproj", "{4E9456F9-2608-40CF-9DB5-B19E857B86B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "Server\Server.csproj", "{2B88FC32-7DE2-4974-A5BD-9E0E73549A6C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{F49B6CF9-E24F-47A7-B364-596A0D58C939}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F49B6CF9-E24F-47A7-B364-596A0D58C939}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F49B6CF9-E24F-47A7-B364-596A0D58C939}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E9456F9-2608-40CF-9DB5-B19E857B86B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E9456F9-2608-40CF-9DB5-B19E857B86B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E9456F9-2608-40CF-9DB5-B19E857B86B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E9456F9-2608-40CF-9DB5-B19E857B86B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B88FC32-7DE2-4974-A5BD-9E0E73549A6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B88FC32-7DE2-4974-A5BD-9E0E73549A6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B88FC32-7DE2-4974-A5BD-9E0E73549A6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B88FC32-7DE2-4974-A5BD-9E0E73549A6C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
