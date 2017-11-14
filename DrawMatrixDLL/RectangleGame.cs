@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GitCalc
+namespace DrawMatrixDLL
 {
     public class RectangleGame : Matrix
     {
@@ -19,25 +19,13 @@ namespace GitCalc
         }
     }
 
-    public class Matrix 
+    public class Matrix
     {
         public int Width { get; set; }
         public int Length { get; set; }
 
         public int Type { get; set; }
 
-     
-
-        //public int Width { get; set; }
-        //public int Length { get; set; }
-
-        //public void GetMatrixSize()
-        //{
-        //    Width = 10;
-        //    Length = 10;
-
-        //    
-        //}
 
     }
 }
