@@ -35,7 +35,7 @@ namespace GitCalc
             // Create a local version of the graphics object for the PictureBox.
             g = e.Graphics;
 
-            if(LoadMatrix)
+            if (LoadMatrix)
             {
                 DrawMatrixClass drawMatrixClass = new DrawMatrixClass();
                 matrix = drawMatrixClass.DrawRectangles(g, 10, 10);
@@ -44,7 +44,7 @@ namespace GitCalc
 
         private void MainForm_MouseClick(object sender, MouseEventArgs e)
         {
-            if(e.X >= 60 && e.Y <=80)
+            if (e.X >= 60 && e.Y <= 80)
             {
                 MessageBox.Show("lol");
             }
@@ -53,7 +53,8 @@ namespace GitCalc
 
             }
         }
+
     }
 
-    
+
 }

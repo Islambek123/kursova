@@ -114,5 +114,22 @@ namespace EditForm
                 list = drawMatrixClass.DrawRectangles(g, matrix.Width, matrix.Length);
             }
         }
+
+        private void EditMatrix_MouseClick(object sender, MouseEventArgs e)
+        {
+            for (int i = 1; i < list.Count; i++)
+            {
+                if (list[i - 1].Begin.X + (i * 30) <= e.X && list[i - 1].Begin.Y + (i * 30) <= e.Y 
+                    && (((list[i - 1].End.X * 4) + 30) >= e.X && ((list[i - 1].End.Y * 4) + 30) >= e.Y))
+                {
+                    MessageBox.Show(list[i].Begin.X.ToString() + list[i].Begin.Y); 
+                }
+            }
+        }
+
+        private void EditMatrix_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

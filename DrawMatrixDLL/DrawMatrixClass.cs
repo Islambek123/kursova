@@ -82,13 +82,13 @@ namespace DrawMatrixDLL
             //}
         }
 
-        private static void Fill(Color color, Graphics g, int i, int j)
+        private static void Fill(Color color, Graphics graphics, int i, int j)
         {
-            Brush b = new SolidBrush(color); // ініцалізація кісті
-            g.DrawRectangle(new Pen(new SolidBrush(color)),
+            Brush brush = new SolidBrush(color); // ініцалізація кісті
+            graphics.DrawRectangle(new Pen(new SolidBrush(color)),
                             new Rectangle(new Point(40 * i, 40 * j), new Size(30, 30))); // малювання "кордонів" елемента матриці
 
-            g.FillRectangle(b, 40 * i, 40 * j, 30, 30); // заповнення кольорем елеметна матриці
+            graphics.FillRectangle(brush, 40 * i, 40 * j, 30, 30); // заповнення кольорем елеметна матриці
         }
     }
 }
