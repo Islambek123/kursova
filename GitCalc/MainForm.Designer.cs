@@ -51,8 +51,8 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.Name = "MainForm";
             this.Text = "Main Form";
-            this.Click += new System.EventHandler(this.MainForm_Click);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.MainForm_Paint);
+            this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.MainForm_MouseClick);
             this.ResumeLayout(false);
 
         }

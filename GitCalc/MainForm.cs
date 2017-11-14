@@ -41,15 +41,16 @@ namespace GitCalc
                 matrix = drawMatrixClass.DrawRectangles(g, 10, 10);
             }
         }
-        
 
-        
-
-        private void MainForm_Click(object sender, EventArgs e)
+        private void MainForm_MouseClick(object sender, MouseEventArgs e)
         {
-            foreach(var item in matrix)
+            if(e.X >= 60 && e.Y <=80)
             {
-                
+                MessageBox.Show("lol");
+            }
+            foreach (var item in matrix)
+            {
+
             }
         }
     }
