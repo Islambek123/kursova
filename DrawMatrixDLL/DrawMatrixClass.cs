@@ -60,26 +60,26 @@ namespace DrawMatrixDLL
         }
         private static void  InitializeMatrix(RectangleGame rectangleGame, int i, int j)
         {
-            if (i % 2 == 0 && j % 3 == 0)
-            {
-                rectangleGame.Type = 1;
-            }
-            else if (i == 0 && j == 0)
-            {
-                rectangleGame.Type = 2;
-            }
-            else if (i == rectangleGame.Width && j == rectangleGame.Length)
-            {
-                rectangleGame.Type = 3;
-            }
-            else if (i == j)
-            {
-                rectangleGame.Type = 4;
-            }
-            else
-            {
+            //if (i % 2 == 0 && j % 3 == 0)
+            //{
+            //    rectangleGame.Type = 1;
+            //}
+            //else if (i == 0 && j == 0)
+            //{
+            //    rectangleGame.Type = 2;
+            //}
+            //else if (i == rectangleGame.Width && j == rectangleGame.Length)
+            //{
+            //    rectangleGame.Type = 3;
+            //}
+            //else if (i == j)
+            //{
+            //    rectangleGame.Type = 4;
+            //}
+            //else
+            //{
                 rectangleGame.Type = 0;
-            }
+            //}
         }
 
         private static void Fill(Color color, Graphics g, int i, int j)

@@ -33,6 +33,7 @@
             // 
             // btn_loadMatrix
             // 
+            this.btn_loadMatrix.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
             this.btn_loadMatrix.Location = new System.Drawing.Point(661, 574);
             this.btn_loadMatrix.Name = "btn_loadMatrix";
             this.btn_loadMatrix.Size = new System.Drawing.Size(75, 23);

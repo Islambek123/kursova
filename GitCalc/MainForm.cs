@@ -38,8 +38,7 @@ namespace GitCalc
             if(LoadMatrix)
             {
                 DrawMatrixClass drawMatrixClass = new DrawMatrixClass();
-                matrix = drawMatrixClass.DrawRectangles(g, 20, 20);
-                
+                matrix = drawMatrixClass.DrawRectangles(g, 10, 10);
             }
         }
         

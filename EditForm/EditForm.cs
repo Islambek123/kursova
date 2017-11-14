@@ -14,16 +14,17 @@ namespace EditForm
 {
     public partial class EditMatrix : Form
     {
-        private List<RectangleGame> list ;
+        private bool IsEnabled { get; set; }
+        private List<RectangleGame> list;
         RectangleGame matrix;
 
-        bool isEnabled;
+        
         Graphics g;
 
         public EditMatrix()
         {
             InitializeComponent();
-            isEnabled = false;
+            IsEnabled = false;
             list = new List<RectangleGame>();
         }
 
@@ -35,6 +36,7 @@ namespace EditForm
 
         private void btn_create_Click(object sender, EventArgs e)
         {
+            IsEnabled = true;
             
             try
             {
@@ -66,15 +68,7 @@ namespace EditForm
                     txtBox_Length.Text = matrix.Length.ToString();
                     txtBox_Width.Text = matrix.Width.ToString();
 
-                    list.Add(matrix);
-
-                    txtBox_Length.Enabled = false;
-                    txtBox_Width.Enabled = false;
-                    btn_create.Enabled = false;
-
-                    isEnabled = true;
                     this.Invalidate(true);
-
                 }
                 else
                 {
@@ -88,18 +82,6 @@ namespace EditForm
                 throw;
             }
 
-        }
-
-        private void btn_create_Paint(object sender, PaintEventArgs e)
-        {
-            // Create a local version of the graphics object for the PictureBox.
-            g = e.Graphics;
-
-            if (isEnabled)
-            {
-                DrawMatrixClass drawMatrixClass = new DrawMatrixClass();
-                list = drawMatrixClass.DrawRectangles(g, int.Parse(txtBox_Width.Text), int.Parse(txtBox_Length.Text));
-            }
         }
 
         private void txtBox_Width_KeyPress(object sender, KeyPressEventArgs e) // перевірка, чи користувач вводить цифру
@@ -122,6 +104,15 @@ namespace EditForm
             }
         }
 
-        
+        private void EditMatrix_Paint(object sender, PaintEventArgs e)
+        {
+            g = e.Graphics;
+
+            if (IsEnabled)
+            {
+                DrawMatrixClass drawMatrixClass = new DrawMatrixClass();
+                list = drawMatrixClass.DrawRectangles(g, matrix.Width, matrix.Length);
+            }
+        }
     }
 }
