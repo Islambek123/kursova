@@ -9,21 +9,20 @@ namespace DrawMatrixDLL
 {
     public class DrawMatrixClass
     {
-        static RectangleGame obj;
-        static List<RectangleGame> matrix;
 
         public DrawMatrixClass()
         {
-            obj = new RectangleGame();
-            matrix = new List<RectangleGame>();
+
         }
 
 
-        public List<RectangleGame> DrawRectangles(Graphics g)
+        public List<RectangleGame> DrawRectangles(Graphics g, int Width, int Length)
         {
-            for (int i = 1; i <= obj.Length; i++)
+            List<RectangleGame> matrix = new List<RectangleGame>();
+
+            for (int i = 1; i <= Length; i++)
             {
-                for (int j = 1; j <= obj.Width; j++)
+                for (int j = 1; j <= Width; j++)
                 {
                     RectangleGame item = new RectangleGame
                     {
@@ -69,7 +68,7 @@ namespace DrawMatrixDLL
             {
                 rectangleGame.Type = 2;
             }
-            else if (i == obj.Width && j == obj.Length)
+            else if (i == rectangleGame.Width && j == rectangleGame.Length)
             {
                 rectangleGame.Type = 3;
             }

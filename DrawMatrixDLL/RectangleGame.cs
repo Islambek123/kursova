@@ -14,8 +14,7 @@ namespace DrawMatrixDLL
 
         public RectangleGame()
         {
-            Width = 10;
-            Length = 15;
+            
         }
     }
 

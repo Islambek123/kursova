@@ -1,4 +1,5 @@
-﻿using GitCalc;
+﻿using DrawMatrixDLL;
+using GitCalc;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,39 +14,38 @@ namespace EditForm
 {
     public partial class EditMatrix : Form
     {
-        Matrix matrix;
-        bool isEnabled;
+        private List<RectangleGame> list ;
+        RectangleGame matrix;
 
+        bool isEnabled;
+        Graphics g;
 
         public EditMatrix()
         {
             InitializeComponent();
             isEnabled = false;
+            list = new List<RectangleGame>();
         }
 
         private void btn_edit_Click(object sender, EventArgs e)
         {
-            if (isEnabled)
-            {
-                isEnabled = true;
-                this.Invalidate(true);
-            }
+
+             
         }
 
         private void btn_create_Click(object sender, EventArgs e)
-        {   
+        {
+            
             try
             {
                 if (!string.IsNullOrEmpty(txtBox_Width.Text) && !string.IsNullOrEmpty(txtBox_Length.Text))
                 {
-                    matrix = new Matrix();
+                    matrix = new RectangleGame();
 
                     if (int.Parse(txtBox_Length.Text) >= 100 && int.Parse(txtBox_Width.Text) >= 100) //якщо матриця >= (100, 100) -> матриця (100, 100)
                     {
-
                         matrix.Length = 100;
                         matrix.Width = 100;
-
                     }
                     else if (int.Parse(txtBox_Length.Text) >= 100) // якщо Length вимір матриці >= 100
                     {
@@ -66,9 +66,14 @@ namespace EditForm
                     txtBox_Length.Text = matrix.Length.ToString();
                     txtBox_Width.Text = matrix.Width.ToString();
 
+                    list.Add(matrix);
+
                     txtBox_Length.Enabled = false;
                     txtBox_Width.Enabled = false;
                     btn_create.Enabled = false;
+
+                    isEnabled = true;
+                    this.Invalidate(true);
 
                 }
                 else
@@ -83,6 +88,18 @@ namespace EditForm
                 throw;
             }
 
+        }
+
+        private void btn_create_Paint(object sender, PaintEventArgs e)
+        {
+            // Create a local version of the graphics object for the PictureBox.
+            g = e.Graphics;
+
+            if (isEnabled)
+            {
+                DrawMatrixClass drawMatrixClass = new DrawMatrixClass();
+                list = drawMatrixClass.DrawRectangles(g, int.Parse(txtBox_Width.Text), int.Parse(txtBox_Length.Text));
+            }
         }
 
         private void txtBox_Width_KeyPress(object sender, KeyPressEventArgs e) // перевірка, чи користувач вводить цифру
@@ -105,9 +122,6 @@ namespace EditForm
             }
         }
 
-        private void btn_create_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+        
     }
 }
