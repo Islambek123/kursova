@@ -44,6 +44,7 @@
             this.pBoxEnemyRoad = new System.Windows.Forms.PictureBox();
             this.pBoxTower = new System.Windows.Forms.PictureBox();
             this.pBoxStart = new System.Windows.Forms.PictureBox();
+            this.rBox_log = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pBoxFinish)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pBoxTowerPlace)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pBoxEnemyRoad)).BeginInit();
@@ -54,14 +55,12 @@
             // btn_edit
             // 
             this.btn_edit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_edit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_edit.Location = new System.Drawing.Point(897, 632);
             this.btn_edit.Name = "btn_edit";
             this.btn_edit.Size = new System.Drawing.Size(75, 23);
             this.btn_edit.TabIndex = 4;
             this.btn_edit.Text = "Edit";
             this.btn_edit.UseVisualStyleBackColor = true;
-            this.btn_edit.Click += new System.EventHandler(this.btn_edit_Click);
             // 
             // lbl_Width
             // 
@@ -154,6 +153,7 @@
             // 
             // pBoxFinish
             // 
+            this.pBoxFinish.Image = global::EditForm.Properties.Resources.Screenshot_6;
             this.pBoxFinish.Location = new System.Drawing.Point(554, 47);
             this.pBoxFinish.Name = "pBoxFinish";
             this.pBoxFinish.Size = new System.Drawing.Size(30, 30);
@@ -163,15 +163,19 @@
             // 
             // pBoxTowerPlace
             // 
+            this.pBoxTowerPlace.Image = global::EditForm.Properties.Resources.Screenshot_7;
             this.pBoxTowerPlace.Location = new System.Drawing.Point(728, 47);
             this.pBoxTowerPlace.Name = "pBoxTowerPlace";
             this.pBoxTowerPlace.Size = new System.Drawing.Size(30, 30);
             this.pBoxTowerPlace.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pBoxTowerPlace.TabIndex = 5;
             this.pBoxTowerPlace.TabStop = false;
+            this.pBoxTowerPlace.Click += new System.EventHandler(this.pBoxTowerPlace_Click);
+            this.pBoxTowerPlace.DragOver += new System.Windows.Forms.DragEventHandler(this.pBoxTowerPlace_DragOver);
             // 
             // pBoxEnemyRoad
             // 
+            this.pBoxEnemyRoad.Image = global::EditForm.Properties.Resources.images;
             this.pBoxEnemyRoad.Location = new System.Drawing.Point(670, 47);
             this.pBoxEnemyRoad.Name = "pBoxEnemyRoad";
             this.pBoxEnemyRoad.Size = new System.Drawing.Size(30, 30);
@@ -181,6 +185,7 @@
             // 
             // pBoxTower
             // 
+            this.pBoxTower.Image = global::EditForm.Properties.Resources.Screenshot_4;
             this.pBoxTower.Location = new System.Drawing.Point(612, 47);
             this.pBoxTower.Name = "pBoxTower";
             this.pBoxTower.Size = new System.Drawing.Size(30, 30);
@@ -190,6 +195,7 @@
             // 
             // pBoxStart
             // 
+            this.pBoxStart.Image = global::EditForm.Properties.Resources.Screenshot_3;
             this.pBoxStart.Location = new System.Drawing.Point(496, 47);
             this.pBoxStart.Name = "pBoxStart";
             this.pBoxStart.Size = new System.Drawing.Size(30, 30);
@@ -197,11 +203,21 @@
             this.pBoxStart.TabIndex = 5;
             this.pBoxStart.TabStop = false;
             // 
+            // rBox_log
+            // 
+            this.rBox_log.Location = new System.Drawing.Point(872, 114);
+            this.rBox_log.Name = "rBox_log";
+            this.rBox_log.ReadOnly = true;
+            this.rBox_log.Size = new System.Drawing.Size(100, 512);
+            this.rBox_log.TabIndex = 9;
+            this.rBox_log.Text = "";
+            // 
             // EditMatrix
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 667);
+            this.Controls.Add(this.rBox_log);
             this.Controls.Add(this.lbl_startPosition);
             this.Controls.Add(this.lbl_finish);
             this.Controls.Add(this.lbl_ground);
@@ -218,9 +234,9 @@
             this.Controls.Add(this.lbl_Length);
             this.Controls.Add(this.lbl_Width);
             this.Controls.Add(this.btn_edit);
+            this.ForeColor = System.Drawing.Color.Black;
             this.Name = "EditMatrix";
             this.Text = "Edit Matrix";
-            this.Load += new System.EventHandler(this.EditMatrix_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.EditMatrix_Paint);
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.EditMatrix_MouseClick);
             ((System.ComponentModel.ISupportInitialize)(this.pBoxFinish)).EndInit();
@@ -251,6 +267,7 @@
         private System.Windows.Forms.Label lbl_ground;
         private System.Windows.Forms.Label lbl_finish;
         private System.Windows.Forms.Label lbl_startPosition;
+        private System.Windows.Forms.RichTextBox rBox_log;
     }
 }
 

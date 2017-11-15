@@ -24,10 +24,11 @@ namespace DrawMatrixDLL
             {
                 for (int j = 1; j <= Width; j++)
                 {
+                    Point beg = new Point(40 * i, 40 * j);
                     RectangleGame item = new RectangleGame
                     {
-                        Begin = new Point(10 * i, 10 * j),
-                        End = new Point(10 * i + 20, 10 * j + 20)
+                        Begin = beg,
+                        End = new Point(beg.X+30, beg.Y+30)
                     };
 
                     InitializeMatrix(item, i, j);
@@ -36,19 +37,19 @@ namespace DrawMatrixDLL
                     switch (item.Type)
                     {
                         case 0:
-                            Fill(Color.Gray, g, i, j); // 0 - земля
+                            Fill(Color.Gray, g, i, j, @"C:\Users\user.STEP\Desktop\kursova\EditForm\Resources\Screenshot_4.png"); // 0 - земля
                             break;
                         case 1:
-                            Fill(Color.Blue, g, i, j); // 1 - місця для будівлі веж
+                            Fill(Color.Blue, g, i, j, @"C:\Users\user.STEP\Desktop\kursova\EditForm\Resources\Screenshot_7.png"); // 1 - місця для будівлі веж
                             break;
                         case 2:
-                            Fill(Color.Green, g, i, j); // 2 - точка спавна
+                            Fill(Color.Green, g, i, j, @"C:\Users\user.STEP\Desktop\kursova\EditForm\Resources\Screenshot_3.png"); // 2 - точка спавна
                             break;
                         case 3:
-                            Fill(Color.Red, g, i, j); // 3 - фініш
+                            Fill(Color.Red, g, i, j, @"C:\Users\user.STEP\Desktop\kursova\EditForm\Resources\Screenshot_6.png"); // 3 - фініш
                             break;
                         case 4:
-                            Fill(Color.Brown, g, i, j); // 4 - клітина ходьби юніта
+                            Fill(Color.Brown, g, i, j, @"C:\Users\user.STEP\Desktop\kursova\EditForm\Resources\images.png"); // 4 - клітина ходьби юніта
                             break;
                         default:
                             break;
@@ -82,13 +83,13 @@ namespace DrawMatrixDLL
             //}
         }
 
-        private static void Fill(Color color, Graphics graphics, int i, int j)
+        private static void Fill(Color color, Graphics graphics, int i, int j, string path)
         {
             Brush brush = new SolidBrush(color); // ініцалізація кісті
             graphics.DrawRectangle(new Pen(new SolidBrush(color)),
                             new Rectangle(new Point(40 * i, 40 * j), new Size(30, 30))); // малювання "кордонів" елемента матриці
 
-            graphics.FillRectangle(brush, 40 * i, 40 * j, 30, 30); // заповнення кольорем елеметна матриці
+            graphics.DrawImage(Image.FromFile(path), 40 * i, 40 * j, 30, 30); // заповнення кольорем елеметна матриці
         }
     }
 }

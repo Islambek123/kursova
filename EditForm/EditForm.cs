@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -15,23 +16,19 @@ namespace EditForm
     public partial class EditMatrix : Form
     {
         private bool IsEnabled { get; set; }
+        private bool IsChecked { get; set; }
         private List<RectangleGame> list;
         RectangleGame matrix;
-
-        
+        Point DrawColorRed;
         Graphics g;
+
 
         public EditMatrix()
         {
+            DrawColorRed = new Point(0, 0);
             InitializeComponent();
             IsEnabled = false;
             list = new List<RectangleGame>();
-        }
-
-        private void btn_edit_Click(object sender, EventArgs e)
-        {
-
-             
         }
 
         private void btn_create_Click(object sender, EventArgs e)
@@ -64,6 +61,7 @@ namespace EditForm
                         matrix.Length = int.Parse(txtBox_Length.Text);
                         matrix.Width = int.Parse(txtBox_Width.Text);
                     }
+                    GetLog($"**Create Matrix**\nMatrix Length, Width:{matrix.Length}, {matrix.Width}");
 
                     txtBox_Length.Text = matrix.Length.ToString();
                     txtBox_Width.Text = matrix.Width.ToString();
@@ -113,23 +111,73 @@ namespace EditForm
                 DrawMatrixClass drawMatrixClass = new DrawMatrixClass();
                 list = drawMatrixClass.DrawRectangles(g, matrix.Width, matrix.Length);
             }
+            //if(DrawColorRed.X!=0 || DrawColorRed.Y!=0)
+            //{
+            //    Brush brush = new SolidBrush(Color.Black); // ініцалізація кісті
+            //    g.FillRectangle(brush, DrawColorRed.X, DrawColorRed.Y, 30, 30); // заповнення кольорем елеметна матриці
+            //    DrawColorRed.X = 0;
+            //    DrawColorRed.Y = 0;
+            //}
         }
 
         private void EditMatrix_MouseClick(object sender, MouseEventArgs e)
         {
-            for (int i = 1; i < list.Count; i++)
+            Point click = new Point(e.X, e.Y);
+            List<RectangleGame> _list = new List<RectangleGame>();
+            _list = list;
+            for (int i = 0; i < list.Count; i++)
             {
-                if (list[i - 1].Begin.X + (i * 30) <= e.X && list[i - 1].Begin.Y + (i * 30) <= e.Y 
-                    && (((list[i - 1].End.X * 4) + 30) >= e.X && ((list[i - 1].End.Y * 4) + 30) >= e.Y))
+                if(
+                    ((click.X>list[i].Begin.X)&&(click.X<list[i].End.X)) &&
+                    ((click.Y > list[i].Begin.Y) && (click.Y < list[i].End.Y))
+                    )
                 {
-                    MessageBox.Show(list[i].Begin.X.ToString() + list[i].Begin.Y); 
+                    list[i].Type = 1;
+                    //MessageBox.Show("Попав в квадрат!");
+                    DrawColorRed.X = list[i].Begin.X;
+                    DrawColorRed.Y = list[i].Begin.Y;
+
+                    if (_list[i].Type != list[i].Type)
+                    {
+                        GetLog($"element {list[i]} -> {list[i].Type}");
+                    }
+
+                    Invalidate(true);
                 }
             }
         }
 
-        private void EditMatrix_Load(object sender, EventArgs e)
+        private void GetLog(string log)
         {
+            rBox_log.Text += log + "\n";
+        }
 
+        private void pBoxTowerPlace_Click(object sender, EventArgs e)
+        {
+            IsChecked = true;
+        }
+
+        private void pBoxTowerPlace_DragOver(object sender, DragEventArgs e)
+        {
+            if (IsChecked)
+            {
+                Point click = new Point(e.X, e.Y);
+                for (int i = 0; i < list.Count; i++)
+                {
+                    if (
+                        ((click.X > list[i].Begin.X) && (click.X < list[i].End.X)) &&
+                        ((click.Y > list[i].Begin.Y) && (click.Y < list[i].End.Y))
+                        )
+                    {
+                        list[i].Type = 1;
+                        //MessageBox.Show("Попав в квадрат!");
+                        DrawColorRed.X = list[i].Begin.X;
+                        DrawColorRed.Y = list[i].Begin.Y;
+
+                        Invalidate(true);
+                    }
+                }
+            }
         }
     }
 }
