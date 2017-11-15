@@ -1,11 +1,14 @@
 ﻿using DrawMatrixDLL;
 using GitCalc;
+using Server;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -21,7 +24,6 @@ namespace EditForm
         RectangleGame matrix;
         Point DrawColorRed;
         Graphics g;
-
 
         public EditMatrix()
         {
@@ -179,5 +181,21 @@ namespace EditForm
                 }
             }
         }
+
+        private void btn_edit_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        public byte[] GetMapToByte(RectangleGame game)
+        {
+            var binFormatter = new BinaryFormatter();
+            MemoryStream ms = new MemoryStream();
+
+            binFormatter.Serialize(ms, game);
+            return ms.ToArray();
+        }
+
+
     }
 }
