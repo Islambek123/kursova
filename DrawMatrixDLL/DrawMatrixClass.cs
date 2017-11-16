@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace DrawMatrixDLL
 {
@@ -15,7 +17,9 @@ namespace DrawMatrixDLL
 
         }
 
-
+        public int Type { get; set; }
+        public RectangleGame DrawingType { get; set; }
+         
         public List<RectangleGame> DrawRectangles(Graphics g, int Width, int Length)
         {
             List<RectangleGame> matrix = new List<RectangleGame>();
@@ -37,19 +41,19 @@ namespace DrawMatrixDLL
                     switch (item.Type)
                     {
                         case 0:
-                            Fill(Color.Gray, g, i, j, @"C:\Users\user.STEP\Desktop\kursova\EditForm\Resources\Screenshot_4.png"); // 0 - земля
+                            Fill(Color.Gray, g, item.Begin.X, item.Begin.Y, @"D:\Bogus\kursova\EditForm\Resources\Screenshot_4.png"); // 0 - земля
                             break;
                         case 1:
-                            Fill(Color.Blue, g, i, j, @"C:\Users\user.STEP\Desktop\kursova\EditForm\Resources\Screenshot_7.png"); // 1 - місця для будівлі веж
+                            Fill(Color.Blue, g, item.Begin.X, item.Begin.Y, @"D:\Bogus\kursova\EditForm\Resources\Screenshot_7.png"); // 1 - місця для будівлі веж
                             break;
                         case 2:
-                            Fill(Color.Green, g, i, j, @"C:\Users\user.STEP\Desktop\kursova\EditForm\Resources\Screenshot_3.png"); // 2 - точка спавна
+                            Fill(Color.Green, g, item.Begin.X, item.Begin.Y, @"D:\Bogus\kursova\EditForm\Resources\Screenshot_3.png"); // 2 - точка спавна
                             break;
                         case 3:
-                            Fill(Color.Red, g, i, j, @"C:\Users\user.STEP\Desktop\kursova\EditForm\Resources\Screenshot_6.png"); // 3 - фініш
+                            Fill(Color.Red, g, item.Begin.X, item.Begin.Y, @"D:\Bogus\kursova\EditForm\Resources\Screenshot_6.png"); // 3 - фініш
                             break;
                         case 4:
-                            Fill(Color.Brown, g, i, j, @"C:\Users\user.STEP\Desktop\kursova\EditForm\Resources\images.png"); // 4 - клітина ходьби юніта
+                            Fill(Color.Brown, g, item.Begin.X, item.Begin.Y, @"D:\Bogus\kursova\EditForm\Resources\images.png"); // 4 - клітина ходьби юніта
                             break;
                         default:
                             break;
@@ -59,6 +63,36 @@ namespace DrawMatrixDLL
             }
             return matrix;
         }
+
+
+        public void ReDrawRectangles(Graphics g, List<RectangleGame> rectGames)
+        {
+            foreach (var item in rectGames)
+            {
+                switch (item.Type)
+                {
+                    case 0:
+                        Fill(Color.Gray, g, item.Begin.X, item.Begin.Y, @"D:\Bogus\kursova\EditForm\Resources\Screenshot_4.png"); // 0 - земля
+                        break;
+                    case 1:
+                        Fill(Color.Blue, g, item.Begin.X, item.Begin.Y, @"D:\Bogus\kursova\EditForm\Resources\Screenshot_7.png"); // 1 - місця для будівлі веж
+                        break;
+                    case 2:
+                        Fill(Color.Green, g, item.Begin.X, item.Begin.Y, @"D:\Bogus\kursova\EditForm\Resources\Screenshot_3.png"); // 2 - точка спавна
+                        break;
+                    case 3:
+                        Fill(Color.Red, g, item.Begin.X, item.Begin.Y, @"D:\Bogus\kursova\EditForm\Resources\Screenshot_6.png"); // 3 - фініш
+                        break;
+                    case 4:
+                        Fill(Color.Brown, g, item.Begin.X, item.Begin.Y, @"D:\Bogus\kursova\EditForm\Resources\images.png"); // 4 - клітина ходьби юніта
+                        break;
+                    default:
+                        break;
+                }
+            }
+            
+        }
+
         private static void  InitializeMatrix(RectangleGame rectangleGame, int i, int j)
         {
             //if (i % 2 == 0 && j % 3 == 0)
@@ -87,9 +121,9 @@ namespace DrawMatrixDLL
         {
             Brush brush = new SolidBrush(color); // ініцалізація кісті
             graphics.DrawRectangle(new Pen(new SolidBrush(color)),
-                            new Rectangle(new Point(40 * i, 40 * j), new Size(30, 30))); // малювання "кордонів" елемента матриці
+                            new Rectangle(new Point(i, j), new Size(30, 30))); // малювання "кордонів" елемента матриці
 
-            graphics.DrawImage(Image.FromFile(path), 40 * i, 40 * j, 30, 30); // заповнення кольорем елеметна матриці
+            graphics.DrawImage(System.Drawing.Image.FromFile(path), i, j, 30, 30); // заповнення кольорем елеметна матриці
         }
     }
 }

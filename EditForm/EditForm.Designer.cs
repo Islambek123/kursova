@@ -161,6 +161,7 @@
             this.pBoxFinish.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pBoxFinish.TabIndex = 5;
             this.pBoxFinish.TabStop = false;
+            this.pBoxFinish.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pBoxFinish_MouseClick);
             // 
             // pBoxTowerPlace
             // 
