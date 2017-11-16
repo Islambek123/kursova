@@ -109,11 +109,15 @@ namespace EditForm
         private void EditMatrix_Paint(object sender, PaintEventArgs e)
         {
             g = e.Graphics;
-
+            DrawMatrixClass drawMatrixClass = new DrawMatrixClass();
             if (IsEnabled)
             {
-                DrawMatrixClass drawMatrixClass = new DrawMatrixClass();
+                
                 list = drawMatrixClass.DrawRectangles(g, matrix.Width, matrix.Length);
+            }
+            if (IsChecked)
+            {
+                drawMatrixClass.ReDrawRectangles(g, list);
             }
             //if(DrawColorRed.X!=0 || DrawColorRed.Y!=0)
             //{
@@ -145,7 +149,8 @@ namespace EditForm
                     {
                         GetLog($"element {list[i]} -> {list[i].Type}");
                     }
-
+                    IsEnabled = false;
+                    IsChecked = true;
                     Invalidate(true);
                 }
             }
@@ -194,5 +199,23 @@ namespace EditForm
         {
             connectToHost = new ConnectToHost();
         }
+        private void pBoxFinish_MouseClick(object sender, MouseEventArgs e)
+        {
+            Point cl = new Point(e.X, e.Y);
+            for (int i = 0; i < list.Count; i++)
+            {
+                if (
+                        ((cl.X > list[i].Begin.X) && (cl.X < list[i].End.X)) &&
+                        ((cl.Y > list[i].Begin.Y) && (cl.Y < list[i].End.Y))
+                        )
+                {
+                    list[i].Type = 2;
+                    DrawColorRed.X = list[i].Begin.X;
+                    DrawColorRed.Y = list[i].Begin.Y;
+                }
+            }
+
+        }
+
     }
 }
