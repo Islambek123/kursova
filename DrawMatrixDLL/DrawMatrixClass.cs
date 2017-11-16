@@ -41,19 +41,19 @@ namespace DrawMatrixDLL
                     switch (item.Type)
                     {
                         case 0:
-                            Fill(Color.Gray, g, item.Begin.X, item.Begin.Y, @"D:\Bogus\kursova\EditForm\Resources\Screenshot_4.png"); // 0 - земля
+                            Fill(Color.Gray, g, item.Begin.X, item.Begin.Y, @"D:\Новая папка\kursova\EditForm\Resources\Screenshot_4.png"); // 0 - земля
                             break;
                         case 1:
-                            Fill(Color.Blue, g, item.Begin.X, item.Begin.Y, @"D:\Bogus\kursova\EditForm\Resources\Screenshot_7.png"); // 1 - місця для будівлі веж
+                            Fill(Color.Blue, g, item.Begin.X, item.Begin.Y, @"D:\Новая папка\kursova\EditForm\Resources\Screenshot_7.png"); // 1 - місця для будівлі веж
                             break;
                         case 2:
-                            Fill(Color.Green, g, item.Begin.X, item.Begin.Y, @"D:\Bogus\kursova\EditForm\Resources\Screenshot_3.png"); // 2 - точка спавна
+                            Fill(Color.Green, g, item.Begin.X, item.Begin.Y, @"D:\Новая папка\kursova\EditForm\Resources\Screenshot_3.png"); // 2 - точка спавна
                             break;
                         case 3:
-                            Fill(Color.Red, g, item.Begin.X, item.Begin.Y, @"D:\Bogus\kursova\EditForm\Resources\Screenshot_6.png"); // 3 - фініш
+                            Fill(Color.Red, g, item.Begin.X, item.Begin.Y, @"D:\Новая папка\kursova\EditForm\Resources\Screenshot_6.png"); // 3 - фініш
                             break;
                         case 4:
-                            Fill(Color.Brown, g, item.Begin.X, item.Begin.Y, @"D:\Bogus\kursova\EditForm\Resources\images.png"); // 4 - клітина ходьби юніта
+                            Fill(Color.Brown, g, item.Begin.X, item.Begin.Y, @"D:\Новая папка\kursova\EditForm\Resources\images.png"); // 4 - клітина ходьби юніта
                             break;
                         default:
                             break;
@@ -72,19 +72,19 @@ namespace DrawMatrixDLL
                 switch (item.Type)
                 {
                     case 0:
-                        Fill(Color.Gray, g, item.Begin.X, item.Begin.Y, @"D:\Bogus\kursova\EditForm\Resources\Screenshot_4.png"); // 0 - земля
+                        Fill(Color.Gray, g, item.Begin.X, item.Begin.Y, @"D:\Новая папка\kursova\EditForm\Resources\Screenshot_4.png"); // 0 - земля
                         break;
                     case 1:
-                        Fill(Color.Blue, g, item.Begin.X, item.Begin.Y, @"D:\Bogus\kursova\EditForm\Resources\Screenshot_7.png"); // 1 - місця для будівлі веж
+                        Fill(Color.Blue, g, item.Begin.X, item.Begin.Y, @"D:\Новая папка\kursova\EditForm\Resources\Screenshot_7.png"); // 1 - місця для будівлі веж
                         break;
                     case 2:
-                        Fill(Color.Green, g, item.Begin.X, item.Begin.Y, @"D:\Bogus\kursova\EditForm\Resources\Screenshot_3.png"); // 2 - точка спавна
+                        Fill(Color.Green, g, item.Begin.X, item.Begin.Y, @"D:\Новая папка\kursova\EditForm\Resources\Screenshot_3.png"); // 2 - точка спавна
                         break;
                     case 3:
-                        Fill(Color.Red, g, item.Begin.X, item.Begin.Y, @"D:\Bogus\kursova\EditForm\Resources\Screenshot_6.png"); // 3 - фініш
+                        Fill(Color.Red, g, item.Begin.X, item.Begin.Y, @"D:\Новая папка\kursova\EditForm\Resources\Screenshot_6.png"); // 3 - фініш
                         break;
                     case 4:
-                        Fill(Color.Brown, g, item.Begin.X, item.Begin.Y, @"D:\Bogus\kursova\EditForm\Resources\images.png"); // 4 - клітина ходьби юніта
+                        Fill(Color.Brown, g, item.Begin.X, item.Begin.Y, @"D:\Новая папка\kursova\EditForm\Resources\images.png"); // 4 - клітина ходьби юніта
                         break;
                     default:
                         break;

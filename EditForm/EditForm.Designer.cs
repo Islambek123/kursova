@@ -204,6 +204,7 @@
             this.pBoxStart.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pBoxStart.TabIndex = 5;
             this.pBoxStart.TabStop = false;
+            this.pBoxStart.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pBoxStart_MouseClick);
             // 
             // rBox_log
             // 

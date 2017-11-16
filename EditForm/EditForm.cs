@@ -21,6 +21,9 @@ namespace EditForm
     {
         private bool IsEnabled { get; set; }
         private bool IsChecked { get; set; }
+        private bool btnStart { get; set; }
+        private bool btnFinish { get; set; }
+        private bool btnRoad { get; set; }
         private List<RectangleGame> list;
         RectangleGame matrix;
         Point DrawColorRed;
@@ -140,11 +143,20 @@ namespace EditForm
                     ((click.Y > list[i].Begin.Y) && (click.Y < list[i].End.Y))
                     )
                 {
-                    list[i].Type = 1;
-                    //MessageBox.Show("Попав в квадрат!");
-                    DrawColorRed.X = list[i].Begin.X;
-                    DrawColorRed.Y = list[i].Begin.Y;
-
+                    if (btnFinish == false)
+                    {
+                        list[i].Type = 3;
+                        DrawColorRed.X = list[i].Begin.X;
+                        DrawColorRed.Y = list[i].Begin.Y;
+                        btnFinish = true;
+                    }
+                    if (btnStart == false)
+                    {
+                        list[i].Type = 2;
+                        DrawColorRed.X = list[i].Begin.X;
+                        DrawColorRed.Y = list[i].Begin.Y;
+                        btnStart = true;
+                    }
                     if (_list[i].Type != list[i].Type)
                     {
                         GetLog($"element {list[i]} -> {list[i].Type}");
@@ -179,7 +191,6 @@ namespace EditForm
                         )
                     {
                         list[i].Type = 1;
-                        //MessageBox.Show("Попав в квадрат!");
                         DrawColorRed.X = list[i].Begin.X;
                         DrawColorRed.Y = list[i].Begin.Y;
 
@@ -192,7 +203,7 @@ namespace EditForm
         private void btn_edit_Click(object sender, EventArgs e)
         {
             connectToHost.GetMapToByte(list);
-            connectToHost.SendBytesToHost();
+            //connectToHost.SendBytesToHost();
         }
 
         private void EditMatrix_Load(object sender, EventArgs e)
@@ -201,21 +212,13 @@ namespace EditForm
         }
         private void pBoxFinish_MouseClick(object sender, MouseEventArgs e)
         {
-            Point cl = new Point(e.X, e.Y);
-            for (int i = 0; i < list.Count; i++)
-            {
-                if (
-                        ((cl.X > list[i].Begin.X) && (cl.X < list[i].End.X)) &&
-                        ((cl.Y > list[i].Begin.Y) && (cl.Y < list[i].End.Y))
-                        )
-                {
-                    list[i].Type = 2;
-                    DrawColorRed.X = list[i].Begin.X;
-                    DrawColorRed.Y = list[i].Begin.Y;
-                }
-            }
+            btnFinish = false;
 
         }
 
+        private void pBoxStart_MouseClick(object sender, MouseEventArgs e)
+        {
+            btnStart = false;
+        }
     }
 }
