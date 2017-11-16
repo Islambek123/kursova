@@ -238,6 +238,7 @@
             this.ForeColor = System.Drawing.Color.Black;
             this.Name = "EditMatrix";
             this.Text = "Edit Matrix";
+            this.Load += new System.EventHandler(this.EditMatrix_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.EditMatrix_Paint);
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.EditMatrix_MouseClick);
             ((System.ComponentModel.ISupportInitialize)(this.pBoxFinish)).EndInit();

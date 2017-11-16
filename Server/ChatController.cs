@@ -19,11 +19,10 @@ namespace serverChat
 
         public struct message
         {
-            public string userName;
             public string data;
-            public message(string name, string msg)
+
+            public message(string msg)
             {
-                userName = name;
                 data = msg;
             }
         }
@@ -34,13 +33,14 @@ namespace serverChat
                 if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(msg)) return;
                 int countMessages = Chat.Count;
                 if (countMessages > _maxMessage) ClearChat(); //якщо, кількість повідомлень в чаті > 100, то очистка
-                message newMessage = new message(userName, msg);
+                message newMessage = new message( msg);
                 Chat.Add(newMessage);
-                Console.WriteLine("New message from {0}.", userName);
+                Console.WriteLine("New message from {0}.");
                 Server.UpdateAllChats();
             }
             catch (Exception exp) { Console.WriteLine("Error with addMessage: {0}.", exp.Message); }
         }
+
         public static void SendMatrixToDb(byte[] mapToByte)
         {
             Map map = new Map();
@@ -51,19 +51,12 @@ namespace serverChat
 
             context.SaveChanges();
         }
-        public static byte[] GetMapToByte(RectangleGame game)
-        {
-            var binFormatter = new BinaryFormatter();
-            MemoryStream ms = new MemoryStream();
-
-            binFormatter.Serialize(ms, game);
-            return ms.ToArray();
-        }
-
+        
         public static void ClearChat()
         {
             Chat.Clear();
         }
+
         public static string GetChat()
         {
             try
@@ -77,7 +70,7 @@ namespace serverChat
                 }
                 for (int i = 0; i < countMessages; i++)
                 {
-                    data += String.Format("{0}~{1}|", Chat[i].userName, Chat[i].data);
+                    data += String.Format("{0}~{1}|", Chat[i].data);
                 }
                 return data;
             }

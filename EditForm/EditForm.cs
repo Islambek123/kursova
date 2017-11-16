@@ -1,4 +1,5 @@
-﻿using DrawMatrixDLL;
+﻿using ConnectToHostDLL;
+using DrawMatrixDLL;
 using GitCalc;
 using Server;
 using System;
@@ -24,6 +25,7 @@ namespace EditForm
         RectangleGame matrix;
         Point DrawColorRed;
         Graphics g;
+        ConnectToHost connectToHost;
 
         public EditMatrix()
         {
@@ -184,18 +186,13 @@ namespace EditForm
 
         private void btn_edit_Click(object sender, EventArgs e)
         {
-
+            connectToHost.GetMapToByte(list);
+            connectToHost.SendBytesToHost();
         }
 
-        public byte[] GetMapToByte(RectangleGame game)
+        private void EditMatrix_Load(object sender, EventArgs e)
         {
-            var binFormatter = new BinaryFormatter();
-            MemoryStream ms = new MemoryStream();
-
-            binFormatter.Serialize(ms, game);
-            return ms.ToArray();
+            connectToHost = new ConnectToHost();
         }
-
-
     }
 }
