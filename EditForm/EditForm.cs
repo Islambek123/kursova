@@ -24,6 +24,8 @@ namespace EditForm
         private bool btnStart { get; set; }
         private bool btnFinish { get; set; }
         private bool btnRoad { get; set; }
+        private bool btnTower { get; set; }
+        private bool btnGround { get; set; }
         private List<RectangleGame> list;
         RectangleGame matrix;
         Point DrawColorRed;
@@ -157,6 +159,27 @@ namespace EditForm
                         DrawColorRed.Y = list[i].Begin.Y;
                         btnStart = true;
                     }
+                    if (btnRoad == false)
+                    {
+                        list[i].Type = 4;
+                        DrawColorRed.X = list[i].Begin.X;
+                        DrawColorRed.Y = list[i].Begin.Y;
+                        btnRoad = true;
+                    }
+                    if (btnTower == false)
+                    {
+                        list[i].Type = 1;
+                        DrawColorRed.X = list[i].Begin.X;
+                        DrawColorRed.Y = list[i].Begin.Y;
+                        btnTower = true;
+                    }
+                    if (btnGround == false)
+                    {
+                        list[i].Type = 0;
+                        DrawColorRed.X = list[i].Begin.X;
+                        DrawColorRed.Y = list[i].Begin.Y;
+                        btnGround = true;
+                    }
                     if (_list[i].Type != list[i].Type)
                     {
                         GetLog($"element {list[i]} -> {list[i].Type}");
@@ -173,13 +196,9 @@ namespace EditForm
             rBox_log.Text += log + "\n";
         }
 
-        private void pBoxTowerPlace_Click(object sender, EventArgs e)
-        {
-            IsChecked = true;
-        }
-
         private void pBoxTowerPlace_DragOver(object sender, DragEventArgs e)
         {
+            
             if (IsChecked)
             {
                 Point click = new Point(e.X, e.Y);
@@ -219,6 +238,22 @@ namespace EditForm
         private void pBoxStart_MouseClick(object sender, MouseEventArgs e)
         {
             btnStart = false;
+        }
+
+        private void pBoxTowerPlace_MouseClick(object sender, MouseEventArgs e)
+        {
+            btnTower = false;
+            IsChecked = true;
+        }
+
+        private void pBoxEnemyRoad_MouseClick(object sender, MouseEventArgs e)
+        {
+            btnRoad = false;
+        }
+
+        private void pBoxTower_MouseClick(object sender, MouseEventArgs e)
+        {
+            btnGround = false;
         }
     }
 }

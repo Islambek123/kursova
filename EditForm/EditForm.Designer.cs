@@ -172,8 +172,8 @@
             this.pBoxTowerPlace.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pBoxTowerPlace.TabIndex = 5;
             this.pBoxTowerPlace.TabStop = false;
-            this.pBoxTowerPlace.Click += new System.EventHandler(this.pBoxTowerPlace_Click);
             this.pBoxTowerPlace.DragOver += new System.Windows.Forms.DragEventHandler(this.pBoxTowerPlace_DragOver);
+            this.pBoxTowerPlace.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pBoxTowerPlace_MouseClick);
             // 
             // pBoxEnemyRoad
             // 
@@ -184,6 +184,7 @@
             this.pBoxEnemyRoad.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pBoxEnemyRoad.TabIndex = 5;
             this.pBoxEnemyRoad.TabStop = false;
+            this.pBoxEnemyRoad.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pBoxEnemyRoad_MouseClick);
             // 
             // pBoxTower
             // 
@@ -194,6 +195,7 @@
             this.pBoxTower.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pBoxTower.TabIndex = 5;
             this.pBoxTower.TabStop = false;
+            this.pBoxTower.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pBoxTower_MouseClick);
             // 
             // pBoxStart
             // 

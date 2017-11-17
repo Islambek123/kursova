@@ -64,7 +64,7 @@ namespace DrawMatrixDLL
             return matrix;
         }
 
-
+        
         public void ReDrawRectangles(Graphics g, List<RectangleGame> rectGames)
         {
             foreach (var item in rectGames)
